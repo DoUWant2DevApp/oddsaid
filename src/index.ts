@@ -12,6 +12,7 @@ import {
 import { whatOddsFormats } from "./files/whatOddsFormats"
 import { oddsFormatsInfo, oddsTypesNames } from "./files/oddFormatInfo"
 import type { OddsTypeNameType } from "./files/oddFormatInfo"
+import { singleBet } from "./betCalculators/singleBetCalc"
 
 import {
   //decimal to
@@ -82,7 +83,9 @@ export const oddsAid = {
 
   //what potential odds formats
   whatOddsFormats,
-
+  betCalculators: {
+    singleBet,
+  },
   //convert odds
   convertOdds: {
     //decimal to
@@ -148,6 +151,8 @@ export {
   isValidAmericanMoneylineOdds,
   isValidFractionalOdds,
   isValidProbability,
+  //bet calculators
+  singleBet,
   //what potential odds formats
   whatOddsFormats,
   //conversion

@@ -2,7 +2,7 @@ import Big from "big.js"
 import { convertToDecimalFromFormat } from "../files/convertOdds"
 import { OddsTypeNameType } from "../files/oddFormatInfo"
 
-export function singleBetCalc(
+export function singleBet(
   betAmount: number | string,
   odds: string,
   oddsFormat: OddsTypeNameType,
