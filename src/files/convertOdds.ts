@@ -141,25 +141,30 @@ export function decimalToProbability(odds: string | number): string | null {
 }
 
 function bigToFraction(decimal: Big): { numerator: number; denominator: number } {
-  // Convert to fraction with a common denominator of 10^decimal places
-  const denominator = new Big(10).pow(decimal.toString().split(".")[1]?.length || 0)
-  const numerator = decimal.mul(denominator)
-  const commonDivisor = gcd(numerator, denominator)
+  const epsilon = Big(1.0e-4)
+  let previousNumerator2, previousDenominator2
 
-  const simplifiedNumerator = numerator.div(commonDivisor).round()
-  const simplifiedDenominator = denominator.div(commonDivisor).round()
+  let fractionPart = decimal
+  let wholePart = Big(Math.floor(fractionPart.toNumber()))
+  let previousNumerator1 = Big(1)
+  let previousDenominator1 = Big(0)
+  let numerator = wholePart
+  let denominator = Big(1)
 
-  return {
-    numerator: simplifiedNumerator.toNumber(),
-    denominator: simplifiedDenominator.toNumber(),
+  while (fractionPart.minus(wholePart).gt(epsilon.mul(denominator).mul(denominator))) {
+    fractionPart = Big(1).div(fractionPart.minus(wholePart))
+    wholePart = Big(Math.floor(fractionPart.toNumber()))
+
+    previousNumerator2 = previousNumerator1
+    previousNumerator1 = numerator
+    previousDenominator2 = previousDenominator1
+    previousDenominator1 = denominator
+
+    numerator = previousNumerator2.plus(wholePart.mul(previousNumerator1))
+    denominator = previousDenominator2.plus(wholePart.mul(previousDenominator1))
   }
-}
 
-// gcd function finds the greatest common divisor (GCD) of two numbers
-function gcd(a: Big, b: Big): Big {
-  if (b.eq(0)) return a
-
-  return gcd(b, a.mod(b))
+  return { numerator: numerator.toNumber(), denominator: denominator.toNumber() }
 }
 
 export function americanToDecimalOdds(odds: string | number): string | null {
