@@ -155,13 +155,11 @@ function bigToFraction(decimal: Big): { numerator: number; denominator: number }
   }
 }
 
+// gcd function finds the greatest common divisor (GCD) of two numbers
 function gcd(a: Big, b: Big): Big {
-  while (!b.eq(0)) {
-    let temp = b
-    b = a.mod(b)
-    a = temp
-  }
-  return a
+  if (b.eq(0)) return a
+
+  return gcd(b, a.mod(b))
 }
 
 export function americanToDecimalOdds(odds: string | number): string | null {
@@ -172,7 +170,7 @@ export function americanToDecimalOdds(odds: string | number): string | null {
 
   if (bigOdds.gte(0)) {
     // Positive American Odds
-    return bigOdds.div(100).plus(1).toString() // Keeping two decimal places for consistency
+    return bigOdds.div(100).plus(1).toString()
   } else {
     // Negative American Odds
     return new Big(100).div(bigOdds.abs()).plus(1).toString()
