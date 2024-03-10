@@ -12,29 +12,29 @@ import {
 
 export type OddsTypeNameType =
   | "Decimal"
-  | "Hong Kong"
-  | "Malaysian"
-  | "Indonesian"
   | "American/Moneyline"
   | "Fractional"
+  | "Hong Kong"
   | "Probability"
+  | "Malaysian"
+  | "Indonesian"
 
 export const oddsTypesNames: [
   "Decimal",
-  "Hong Kong",
-  "Malaysian",
-  "Indonesian",
   "American/Moneyline",
   "Fractional",
   "Probability",
+  "Hong Kong",
+  "Malaysian",
+  "Indonesian",
 ] = [
   "Decimal",
-  "Hong Kong",
-  "Malaysian",
-  "Indonesian",
   "American/Moneyline",
   "Fractional",
   "Probability",
+  "Hong Kong",
+  "Malaysian",
+  "Indonesian",
 ]
 
 export const oddsFormatsInfo = {
