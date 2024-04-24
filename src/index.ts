@@ -155,7 +155,15 @@ export {
   singleBet,
   //what potential odds formats
   whatOddsFormats,
-  //conversion
+
+  //convertFromXtoY
+  convertOddsFromXToY,
+  //info
+  oddsFormatsInfo,
+  oddsTypesNames,
+}
+
+export {  //conversion
   //decimal to
   decimalToAmericanOdds,
   decimalToHongKongOdds,
@@ -204,11 +212,5 @@ export {
   probabilityToHongKongOdds,
   probabilityToMalaysianOdds,
   probabilityToIndonesianOdds,
-  probabilityToFractionalOdds,
-  //convertFromXtoY
-  convertOddsFromXToY,
-  //info
-  oddsFormatsInfo,
-  oddsTypesNames,
-}
+  probabilityToFractionalOdds,}from './files/convertOdds'
 export type { OddsTypeNameType }
