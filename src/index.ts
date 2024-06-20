@@ -4,7 +4,7 @@ import {
   isValidHongKongOdds,
   isValidMalaysianOdds,
   isValidIndonesianOdds,
-  isValidAmericanMoneylineOdds,
+  isValidAmericanOdds,
   isValidFractionalOdds,
   isValidProbability,
 } from "./files/isValidOdds"
@@ -76,7 +76,7 @@ export const oddsAid = {
     isValidHongKongOdds,
     isValidMalaysianOdds,
     isValidIndonesianOdds,
-    isValidAmericanMoneylineOdds,
+    isValidAmericanOdds,
     isValidFractionalOdds,
     isValidProbability,
   },
@@ -148,7 +148,7 @@ export {
   isValidHongKongOdds,
   isValidMalaysianOdds,
   isValidIndonesianOdds,
-  isValidAmericanMoneylineOdds,
+  isValidAmericanOdds,
   isValidFractionalOdds,
   isValidProbability,
   //bet calculators

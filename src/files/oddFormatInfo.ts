@@ -1,7 +1,7 @@
 //Odds Types: American, Decimal, Fractional, Probability, Hong Kong, Malay, Indonesian
 
 import {
-  isValidAmericanMoneylineOdds,
+  isValidAmericanOdds,
   isValidDecimalOdds,
   isValidFractionalOdds,
   isValidHongKongOdds,
@@ -12,7 +12,7 @@ import {
 
 export type OddsTypeNameType =
   | "Decimal"
-  | "American/Moneyline"
+  | "American"
   | "Fractional"
   | "Hong Kong"
   | "Probability"
@@ -21,21 +21,13 @@ export type OddsTypeNameType =
 
 export const oddsTypesNames: [
   "Decimal",
-  "American/Moneyline",
+  "American",
   "Fractional",
   "Probability",
   "Hong Kong",
   "Malaysian",
   "Indonesian",
-] = [
-  "Decimal",
-  "American/Moneyline",
-  "Fractional",
-  "Probability",
-  "Hong Kong",
-  "Malaysian",
-  "Indonesian",
-]
+] = ["Decimal", "American", "Fractional", "Probability", "Hong Kong", "Malaysian", "Indonesian"]
 
 export const oddsFormatsInfo = {
   ["Decimal"]: {
@@ -70,8 +62,8 @@ export const oddsFormatsInfo = {
     },
     validationFunction: isValidIndonesianOdds,
   },
-  "American/Moneyline": {
-    name: "American/Moneyline",
+  American: {
+    name: "American",
     range: {
       dogMin: 100,
       dogMax: Infinity,
@@ -79,7 +71,7 @@ export const oddsFormatsInfo = {
       favMin: -Infinity,
       favMax: -100,
     },
-    validationFunction: isValidAmericanMoneylineOdds,
+    validationFunction: isValidAmericanOdds,
   },
   Fractional: {
     name: "Fractional",

@@ -6,7 +6,7 @@ export function isValidOdds(odds: string | number) {
     isValidHongKongOdds(odds) ||
     isValidMalaysianOdds(odds) ||
     isValidIndonesianOdds(odds) ||
-    isValidAmericanMoneylineOdds(odds) ||
+    isValidAmericanOdds(odds) ||
     (typeof odds === "string" && isValidFractionalOdds(odds)) ||
     (typeof odds === "string" && isValidProbability(odds))
   ) {
@@ -75,13 +75,13 @@ export function isValidIndonesianOdds(odds: string | number) {
   return false
 }
 
-export function isValidAmericanMoneylineOdds(odds: string | number) {
+export function isValidAmericanOdds(odds: string | number) {
   if (!["string", "number"].includes(typeof odds)) {
     return false
   }
 
   const numberOdds = Number(odds)
-  const info = oddsFormatsInfo["American/Moneyline"].range
+  const info = oddsFormatsInfo["American"].range
 
   if (
     !isNaN(numberOdds) &&

@@ -1,6 +1,6 @@
 import Big from "big.js"
 import {
-  isValidAmericanMoneylineOdds,
+  isValidAmericanOdds,
   isValidDecimalOdds,
   isValidFractionalOdds,
   isValidHongKongOdds,
@@ -21,7 +21,7 @@ export function convertOddsFromXToY(
     switch (convertTo) {
       case "Decimal":
         return decimalOdds
-      case "American/Moneyline":
+      case "American":
         return decimalToAmericanOdds(decimalOdds)
       case "Hong Kong":
         return decimalToHongKongOdds(decimalOdds)
@@ -45,7 +45,7 @@ export function convertToDecimalFromFormat(odds: string, convertFrom: OddsTypeNa
     case "Decimal":
       decimalOdds = isValidDecimalOdds(odds) ? odds : null
       break
-    case "American/Moneyline":
+    case "American":
       decimalOdds = americanToDecimalOdds(odds)
       break
     case "Hong Kong":
@@ -168,7 +168,7 @@ function bigToFraction(decimal: Big): { numerator: number; denominator: number }
 }
 
 export function americanToDecimalOdds(odds: string | number): string | null {
-  if (!isValidAmericanMoneylineOdds(odds)) {
+  if (!isValidAmericanOdds(odds)) {
     return null
   }
   const bigOdds = new Big(Number(odds))

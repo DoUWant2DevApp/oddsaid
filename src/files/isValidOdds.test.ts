@@ -1,5 +1,5 @@
 import {
-  isValidAmericanMoneylineOdds,
+  isValidAmericanOdds,
   isValidDecimalOdds,
   isValidFractionalOdds,
   isValidHongKongOdds,
@@ -140,7 +140,7 @@ test.each([
   //@ts-ignore
   expect(isValidIndonesianOdds(input)).toBe(output)
 })
-//American/Moneyline
+//American
 test.each([
   [100, true],
   [-100, true],
@@ -160,9 +160,9 @@ test.each([
   [true, false],
   [NaN, false],
   ["", false],
-])("isValidAmericanMoneylineOdds test", (input, output) => {
+])("isValidAmericanOdds test", (input, output) => {
   //@ts-ignore
-  expect(isValidAmericanMoneylineOdds(input)).toBe(output)
+  expect(isValidAmericanOdds(input)).toBe(output)
 })
 //Fractional
 test.each([
