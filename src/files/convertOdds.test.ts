@@ -631,7 +631,7 @@ test.each([
   ["2.6767", "Decimal", "Hong Kong", 3, "1.677"],
   ["1.26723", "Decimal", "Malaysian", 3, "0.267"],
   ["1.26723", "Decimal", "Indonesian", 3, "-3.742"],
-  ["1.5", "Decimal", "American", 2, "-200.00"],
+  ["1.5", "Decimal", "American", 2, "-200"],
   ["1.5", "Decimal", "Fractional", 2, "1/2"],
   [NaN, "American", "Fractional", 2, null],
   [NaN, "American", "Fractio", 2, null],

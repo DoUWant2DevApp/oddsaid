@@ -14,35 +14,37 @@ export function convertOddsFromXToY(
   odds: string,
   convertFrom: OddsTypeNameType,
   convertTo: OddsTypeNameType,
-  toFixed?: number,
+  roundDecimals?: number,
 ): string | null {
   let decimalOdds: string | null = convertToDecimalFromFormat(odds, convertFrom)
 
   if (decimalOdds) {
     switch (convertTo) {
       case "Decimal":
-        return toFixed ? new Big(decimalOdds).toFixed(toFixed) : decimalOdds
+        return roundDecimals ? new Big(decimalOdds).round(roundDecimals).toString() : decimalOdds
       case "American":
         let aOdds = decimalToAmericanOdds(decimalOdds)
-        return toFixed && aOdds
-          ? `${Number(decimalOdds) >= 2 ? "+" : ""}${new Big(aOdds.replace("+", "")).toFixed(
-              toFixed,
+        return roundDecimals && aOdds
+          ? `${Number(decimalOdds) >= 2 ? "+" : ""}${new Big(aOdds.replace("+", "")).round(
+              roundDecimals,
             )}`
           : aOdds
       case "Hong Kong":
         const hOdds = decimalToHongKongOdds(decimalOdds)
-        return toFixed && hOdds ? new Big(hOdds).toFixed(toFixed) : hOdds
+        return roundDecimals && hOdds ? new Big(hOdds).round(roundDecimals).toString() : hOdds
       case "Malaysian":
         const mOdds = decimalToMalaysianOdds(decimalOdds)
-        return toFixed && mOdds ? new Big(mOdds).toFixed(toFixed) : mOdds
+        return roundDecimals && mOdds ? new Big(mOdds).round(roundDecimals).toString() : mOdds
       case "Indonesian":
         const iOdds = decimalToIndonesianOdds(decimalOdds)
-        return toFixed && iOdds ? new Big(iOdds).toFixed(toFixed) : iOdds
+        return roundDecimals && iOdds ? new Big(iOdds).round(roundDecimals).toString() : iOdds
       case "Fractional":
         return decimalToFractionalOdds(decimalOdds)
       case "Probability":
         const prob = decimalToProbability(decimalOdds)
-        return toFixed && prob ? new Big(prob.replace("%", "")).toFixed(toFixed) + "%" : prob
+        return roundDecimals && prob
+          ? new Big(prob.replace("%", "")).round(roundDecimals) + "%"
+          : prob
       default:
         return null
     }
