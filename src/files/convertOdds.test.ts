@@ -621,3 +621,21 @@ test.each([
   //@ts-ignore
   expect(convertOddsFromXToY(odds, convertFrom, convertTo)).toBe(output)
 })
+test.each([
+  // from decimal
+  ["2.6777", "Decimal", "American", 2, "+167.77"],
+  ["1.23", "Decimal", "American", 1, "-434.8"],
+  ["-2", "Decimal", "American", 1, null],
+  ["2.62", "Decimal", "Probability", 3, "38.168%"],
+  ["2.62", "Decimal", "Probbility", 3, null],
+  ["2.6767", "Decimal", "Hong Kong", 3, "1.677"],
+  ["1.26723", "Decimal", "Malaysian", 3, "0.267"],
+  ["1.26723", "Decimal", "Indonesian", 3, "-3.742"],
+  ["1.5", "Decimal", "American", 2, "-200.00"],
+  ["1.5", "Decimal", "Fractional", 2, "1/2"],
+  [NaN, "American", "Fractional", 2, null],
+  [NaN, "American", "Fractio", 2, null],
+])("convertOddsFromXToY toFixed test", (odds, convertFrom, convertTo, toFixed, output) => {
+  //@ts-ignore
+  expect(convertOddsFromXToY(odds, convertFrom, convertTo, toFixed)).toBe(output)
+})

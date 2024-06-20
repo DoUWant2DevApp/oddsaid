@@ -14,25 +14,35 @@ export function convertOddsFromXToY(
   odds: string,
   convertFrom: OddsTypeNameType,
   convertTo: OddsTypeNameType,
+  toFixed?: number,
 ): string | null {
   let decimalOdds: string | null = convertToDecimalFromFormat(odds, convertFrom)
 
   if (decimalOdds) {
     switch (convertTo) {
       case "Decimal":
-        return decimalOdds
+        return toFixed ? new Big(decimalOdds).toFixed(toFixed) : decimalOdds
       case "American":
-        return decimalToAmericanOdds(decimalOdds)
+        let aOdds = decimalToAmericanOdds(decimalOdds)
+        return toFixed && aOdds
+          ? `${Number(decimalOdds) >= 2 ? "+" : ""}${new Big(aOdds.replace("+", "")).toFixed(
+              toFixed,
+            )}`
+          : aOdds
       case "Hong Kong":
-        return decimalToHongKongOdds(decimalOdds)
+        const hOdds = decimalToHongKongOdds(decimalOdds)
+        return toFixed && hOdds ? new Big(hOdds).toFixed(toFixed) : hOdds
       case "Malaysian":
-        return decimalToMalaysianOdds(decimalOdds)
+        const mOdds = decimalToMalaysianOdds(decimalOdds)
+        return toFixed && mOdds ? new Big(mOdds).toFixed(toFixed) : mOdds
       case "Indonesian":
-        return decimalToIndonesianOdds(decimalOdds)
+        const iOdds = decimalToIndonesianOdds(decimalOdds)
+        return toFixed && iOdds ? new Big(iOdds).toFixed(toFixed) : iOdds
       case "Fractional":
         return decimalToFractionalOdds(decimalOdds)
       case "Probability":
-        return decimalToProbability(decimalOdds)
+        const prob = decimalToProbability(decimalOdds)
+        return toFixed && prob ? new Big(prob.replace("%", "")).toFixed(toFixed) + "%" : prob
       default:
         return null
     }
