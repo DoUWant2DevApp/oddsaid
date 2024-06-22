@@ -13,6 +13,7 @@ import { whatOddsFormats } from "./files/whatOddsFormats"
 import { oddsFormatsInfo, oddsTypesNames } from "./files/oddFormatInfo"
 import type { OddsTypeNameType } from "./files/oddFormatInfo"
 import { singleBet } from "./betCalculators/singleBetCalc"
+import { noVigOddsConversion } from "./betCalculators/noVigOddsConversion"
 
 import {
   //decimal to
@@ -85,6 +86,7 @@ export const oddsAid = {
   whatOddsFormats,
   betCalculators: {
     singleBet,
+    noVigOddsConversion,
   },
   //convert odds
   convertOdds: {
@@ -153,6 +155,7 @@ export {
   isValidProbability,
   //bet calculators
   singleBet,
+  noVigOddsConversion,
   //what potential odds formats
   whatOddsFormats,
 
@@ -163,7 +166,8 @@ export {
   oddsTypesNames,
 }
 
-export {  //conversion
+export {
+  //conversion
   //decimal to
   decimalToAmericanOdds,
   decimalToHongKongOdds,
@@ -212,5 +216,6 @@ export {  //conversion
   probabilityToHongKongOdds,
   probabilityToMalaysianOdds,
   probabilityToIndonesianOdds,
-  probabilityToFractionalOdds,}from './files/convertOdds'
+  probabilityToFractionalOdds,
+} from "./files/convertOdds"
 export type { OddsTypeNameType }
