@@ -635,6 +635,8 @@ test.each([
   ["1.5", "Decimal", "Fractional", 2, "1/2"],
   [NaN, "American", "Fractional", 2, null],
   [NaN, "American", "Fractio", 2, null],
+  ["-1100", "American", "Decimal", 4, "1.0909"],
+  ["1.0909", "Decimal", "Indonesian", 4, "-11.0011"],
 ])("convertOddsFromXToY toFixed test", (odds, convertFrom, convertTo, toFixed, output) => {
   //@ts-ignore
   expect(convertOddsFromXToY(odds, convertFrom, convertTo, toFixed)).toBe(output)

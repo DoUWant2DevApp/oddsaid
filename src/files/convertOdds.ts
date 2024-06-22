@@ -21,28 +21,36 @@ export function convertOddsFromXToY(
   if (decimalOdds) {
     switch (convertTo) {
       case "Decimal":
-        return roundDecimals ? new Big(decimalOdds).round(roundDecimals).toString() : decimalOdds
+        return typeof roundDecimals === "number"
+          ? new Big(decimalOdds).round(roundDecimals).toString()
+          : decimalOdds
       case "American":
         let aOdds = decimalToAmericanOdds(decimalOdds)
-        return roundDecimals && aOdds
+        return typeof roundDecimals === "number" && aOdds
           ? `${Number(decimalOdds) >= 2 ? "+" : ""}${new Big(aOdds.replace("+", "")).round(
               roundDecimals,
             )}`
           : aOdds
       case "Hong Kong":
         const hOdds = decimalToHongKongOdds(decimalOdds)
-        return roundDecimals && hOdds ? new Big(hOdds).round(roundDecimals).toString() : hOdds
+        return typeof roundDecimals === "number" && hOdds
+          ? new Big(hOdds).round(roundDecimals).toString()
+          : hOdds
       case "Malaysian":
         const mOdds = decimalToMalaysianOdds(decimalOdds)
-        return roundDecimals && mOdds ? new Big(mOdds).round(roundDecimals).toString() : mOdds
+        return typeof roundDecimals === "number" && mOdds
+          ? new Big(mOdds).round(roundDecimals).toString()
+          : mOdds
       case "Indonesian":
         const iOdds = decimalToIndonesianOdds(decimalOdds)
-        return roundDecimals && iOdds ? new Big(iOdds).round(roundDecimals).toString() : iOdds
+        return typeof roundDecimals === "number" && iOdds
+          ? new Big(iOdds).round(roundDecimals).toString()
+          : iOdds
       case "Fractional":
         return decimalToFractionalOdds(decimalOdds)
       case "Probability":
         const prob = decimalToProbability(decimalOdds)
-        return roundDecimals && prob
+        return typeof roundDecimals === "number" && prob
           ? new Big(prob.replace("%", "")).round(roundDecimals) + "%"
           : prob
       default:
