@@ -11,8 +11,8 @@ import {
 } from "./isValidOdds"
 
 export type OddsTypeNameType =
-  | "Decimal"
   | "American"
+  | "Decimal"
   | "Fractional"
   | "Hong Kong"
   | "Probability"
@@ -20,14 +20,14 @@ export type OddsTypeNameType =
   | "Indonesian"
 
 export const oddsTypesNames: [
-  "Decimal",
   "American",
+  "Decimal",
   "Fractional",
   "Probability",
   "Hong Kong",
   "Malaysian",
   "Indonesian",
-] = ["Decimal", "American", "Fractional", "Probability", "Hong Kong", "Malaysian", "Indonesian"]
+] = ["American", "Decimal", "Fractional", "Probability", "Hong Kong", "Malaysian", "Indonesian"]
 
 export const oddsFormatsInfo = {
   ["Decimal"]: {
