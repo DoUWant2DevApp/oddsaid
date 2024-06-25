@@ -4,7 +4,10 @@ export function whatOddsFormats(odds: number | string): Array<OddsTypeNameType> 
   const possibleOdds: OddsTypeNameType[] = []
   odds = odds + ""
   for (let str of oddsTypesNames) {
-    if (oddsFormatsInfo[str].validationFunction(odds)) {
+    if (
+      typeof oddsFormatsInfo?.[str]?.validationFunction === "function" &&
+      oddsFormatsInfo[str].validationFunction(odds)
+    ) {
       possibleOdds.push(str)
     }
   }
