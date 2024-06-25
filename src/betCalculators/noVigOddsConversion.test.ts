@@ -92,7 +92,7 @@ test.each([
 ])("noVigOddsConversion test", (oddsFormat, odds1, odds2, roundOptions, correctResult) => {
   //   @ts-ignore
   let res = noVigOddsConversion(oddsFormat, odds1, odds2, roundOptions)
-  console.log("____", res, correctResult, "____")
+  // console.log("____", res, correctResult, "____")
   expect(res.noVigOdds1).toBe(correctResult.noVigOdds1)
   expect(res.noVigProbability1).toBe(correctResult.noVigProbability1)
   expect(res.noVigOdds2).toBe(correctResult.noVigOdds2)

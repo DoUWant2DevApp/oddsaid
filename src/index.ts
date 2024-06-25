@@ -14,6 +14,7 @@ import { oddsFormatsInfo, oddsTypesNames } from "./files/oddFormatInfo"
 import type { OddsTypeNameType } from "./files/oddFormatInfo"
 import { singleBet } from "./betCalculators/singleBetCalc"
 import { noVigOddsConversion } from "./betCalculators/noVigOddsConversion"
+import { parlayOddsCalc } from "./betCalculators/parlayOddsCalc"
 
 import {
   //decimal to
@@ -87,6 +88,7 @@ export const oddsAid = {
   betCalculators: {
     singleBet,
     noVigOddsConversion,
+    parlayOddsCalc,
   },
   //convert odds
   convertOdds: {
@@ -156,6 +158,7 @@ export {
   //bet calculators
   singleBet,
   noVigOddsConversion,
+  parlayOddsCalc,
   //what potential odds formats
   whatOddsFormats,
 
