@@ -58,6 +58,13 @@ const hedgeTestExamples = [
     "Prevent Loss",
     null,
   ],
+  [
+    100,
+    { odds: 110, oddsFormat: "American" },
+    { odds: 115, oddsFormat: "American" },
+    "Equal Profit",
+    97.67,
+  ],
 ]
 
 test.each(hedgeTestExamples)(
