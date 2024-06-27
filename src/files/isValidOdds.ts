@@ -1,4 +1,49 @@
-import { oddsFormatsInfo } from "./oddFormatInfo"
+export const oddsFormatting = {
+  ["Decimal"]: {
+    name: "Decimal",
+    min: 1,
+    midPoint: 2,
+    max: Infinity,
+  },
+  "Hong Kong": {
+    name: "Hong Kong",
+    min: 0,
+    midPoint: 1,
+    max: Infinity,
+  },
+  Malaysian: {
+    name: "Malaysian",
+    min: -1,
+    midPoint: [0, 1, -1],
+    max: 1,
+  },
+  Indonesian: {
+    name: "Indonesian",
+    range: {
+      dogMin: 1,
+      dogMax: Infinity,
+      midPoints: [1, -1],
+      favMin: -Infinity,
+      favMax: -1,
+    },
+  },
+  American: {
+    name: "American",
+    range: {
+      dogMin: 100,
+      dogMax: Infinity,
+      midPoints: [100, -100],
+      favMin: -Infinity,
+      favMax: -100,
+    },
+  },
+  Fractional: {
+    name: "Fractional",
+  },
+  Probability: {
+    name: "Probability",
+  },
+}
 
 export function isValidOdds(odds: string | number) {
   if (
@@ -21,7 +66,7 @@ export function isValidDecimalOdds(odds: string | number) {
   }
 
   const numberOdds = Number(odds)
-  const info = oddsFormatsInfo.Decimal
+  const info = oddsFormatting.Decimal
 
   if (!isNaN(numberOdds) && numberOdds > info.min && numberOdds <= info.max) {
     return true
@@ -35,7 +80,7 @@ export function isValidHongKongOdds(odds: string | number) {
   }
 
   const numberOdds = Number(odds)
-  const info = oddsFormatsInfo["Hong Kong"]
+  const info = oddsFormatting["Hong Kong"]
 
   if (!isNaN(numberOdds) && numberOdds > info.min && numberOdds <= info.max) {
     return true
@@ -49,7 +94,7 @@ export function isValidMalaysianOdds(odds: string | number) {
   }
 
   const numberOdds = Number(odds)
-  const info = oddsFormatsInfo.Malaysian
+  const info = oddsFormatting.Malaysian
 
   if (!isNaN(numberOdds) && numberOdds >= info.min && numberOdds <= info.max && numberOdds !== 0) {
     return true
@@ -63,7 +108,7 @@ export function isValidIndonesianOdds(odds: string | number) {
   }
 
   const numberOdds = Number(odds)
-  const info = oddsFormatsInfo.Indonesian.range
+  const info = oddsFormatting.Indonesian.range
 
   if (
     !isNaN(numberOdds) &&
@@ -81,7 +126,7 @@ export function isValidAmericanOdds(odds: string | number) {
   }
 
   const numberOdds = Number(odds)
-  const info = oddsFormatsInfo["American"].range
+  const info = oddsFormatting["American"].range
 
   if (
     !isNaN(numberOdds) &&

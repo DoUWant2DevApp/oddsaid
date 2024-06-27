@@ -8,6 +8,7 @@ import {
   isValidIndonesianOdds,
   isValidMalaysianOdds,
   isValidProbability,
+  oddsFormatting,
 } from "./isValidOdds"
 
 export type OddsTypeNameType =
@@ -31,54 +32,31 @@ export const oddsTypesNames: [
 
 export const oddsFormatsInfo = {
   ["Decimal"]: {
-    name: "Decimal",
-    min: 1,
-    midPoint: 2,
-    max: Infinity,
+    ...oddsFormatting.Decimal,
     validationFunction: isValidDecimalOdds,
   },
   "Hong Kong": {
-    name: "Hong Kong",
-    min: 0,
-    midPoint: 1,
-    max: Infinity,
+    ...oddsFormatting["Hong Kong"],
     validationFunction: isValidHongKongOdds,
   },
   Malaysian: {
-    name: "Malaysian",
-    min: -1,
-    midPoint: [0, 1, -1],
-    max: 1,
+    ...oddsFormatting.Malaysian,
     validationFunction: isValidMalaysianOdds,
   },
   Indonesian: {
-    name: "Indonesian",
-    range: {
-      dogMin: 1,
-      dogMax: Infinity,
-      midPoints: [1, -1],
-      favMin: -Infinity,
-      favMax: -1,
-    },
+    ...oddsFormatting.Indonesian,
     validationFunction: isValidIndonesianOdds,
   },
   American: {
-    name: "American",
-    range: {
-      dogMin: 100,
-      dogMax: Infinity,
-      midPoints: [100, -100],
-      favMin: -Infinity,
-      favMax: -100,
-    },
+    ...oddsFormatting.American,
     validationFunction: isValidAmericanOdds,
   },
   Fractional: {
-    name: "Fractional",
+    ...oddsFormatting.Fractional,
     validationFunction: isValidFractionalOdds,
   },
   Probability: {
-    name: "Probability",
+    ...oddsFormatting.Probability,
     validationFunction: isValidProbability,
   },
 }
