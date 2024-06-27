@@ -16,6 +16,7 @@ import { singleBet } from "./betCalculators/singleBetCalc"
 import { noVigOddsConversion } from "./betCalculators/noVigOddsConversion"
 import { parlayOddsCalc } from "./betCalculators/parlayOddsCalc"
 import { hedgeBetAmount } from "./betCalculators/hedgeBetAmount"
+import type { HedgeStrategiesType } from "./betCalculators/hedgeBetAmount"
 
 import {
   //decimal to
@@ -224,4 +225,4 @@ export {
   probabilityToIndonesianOdds,
   probabilityToFractionalOdds,
 } from "./files/convertOdds"
-export type { OddsTypeNameType }
+export type { OddsTypeNameType, HedgeStrategiesType }

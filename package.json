@@ -1,6 +1,6 @@
 {
   "name": "oddsaid",
-  "version": "0.0.18",
+  "version": "0.0.19",
   "description": "A library for validating odds formats, converting odds, and calculating bets.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
