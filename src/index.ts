@@ -15,6 +15,7 @@ import type { OddsTypeNameType } from "./files/oddFormatInfo"
 import { singleBet } from "./betCalculators/singleBetCalc"
 import { noVigOddsConversion } from "./betCalculators/noVigOddsConversion"
 import { parlayOddsCalc } from "./betCalculators/parlayOddsCalc"
+import { hedgeBetAmount } from "./betCalculators/hedgeBetAmount"
 
 import {
   //decimal to
@@ -89,6 +90,7 @@ export const oddsAid = {
     singleBet,
     noVigOddsConversion,
     parlayOddsCalc,
+    hedgeBetAmount,
   },
   //convert odds
   convertOdds: {
@@ -159,6 +161,7 @@ export {
   singleBet,
   noVigOddsConversion,
   parlayOddsCalc,
+  hedgeBetAmount,
   //what potential odds formats
   whatOddsFormats,
 
