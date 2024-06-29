@@ -16,7 +16,9 @@ import { singleBet } from "./betCalculators/singleBetCalc"
 import { noVigOddsConversion } from "./betCalculators/noVigOddsConversion"
 import { parlayOddsCalc } from "./betCalculators/parlayOddsCalc"
 import { hedgeBetAmount } from "./betCalculators/hedgeBetAmount"
+import { arbitrageBetAmount } from "./betCalculators/arbitrageBetAmount"
 import type { HedgeStrategiesType } from "./betCalculators/hedgeBetAmount"
+import { expectedValue } from "./betCalculators/expectedValue"
 
 import {
   //decimal to
@@ -92,6 +94,8 @@ export const oddsAid = {
     noVigOddsConversion,
     parlayOddsCalc,
     hedgeBetAmount,
+    arbitrageBetAmount,
+    expectedValue,
   },
   //convert odds
   convertOdds: {
@@ -163,6 +167,8 @@ export {
   noVigOddsConversion,
   parlayOddsCalc,
   hedgeBetAmount,
+  arbitrageBetAmount,
+  expectedValue,
   //what potential odds formats
   whatOddsFormats,
 
