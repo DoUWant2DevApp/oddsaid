@@ -32,6 +32,7 @@ export function kellyCriterionCalculator(
   if (
     oddsTypesNames.includes(oddsFormat) &&
     oddsFormatsInfo[oddsFormat].validationFunction(odds) &&
+    winProbability !== "" &&
     !isNaN(Number(winProbability))
   ) {
     const profitFrom100Bet = singleBet(100, odds, oddsFormat).profit
