@@ -44,9 +44,6 @@ export function kellyCriterionCalculator(
         .minus(probabilityOfLossAsDecimal.div(proportionOfBetGainedWithWin))
         .times(kellyMultiplier)
 
-      calc.percentageOfBankrollToBet =
-        fractionOfBankrollToWagerAsDecimal.times(100).round(2).toNumber() + "%"
-
       const betAmount =
         typeof bankroll === "number"
           ? Big(bankroll).times(fractionOfBankrollToWagerAsDecimal).round(2).toNumber()
@@ -54,11 +51,14 @@ export function kellyCriterionCalculator(
 
       const ev = expectedValue(betAmount, odds, oddsFormat, winProbability)
 
-      calc.amountToBet = typeof bankroll === "number" ? betAmount : null
-
       if (ev) {
-        calc.expectedValue = bankroll ? ev : null
-        calc.expectedROI = Big(ev).div(betAmount).times(100).round(2).toNumber() + "%"
+        const bigRoi = Big(ev).div(betAmount).times(100)
+        calc.expectedROI = bigRoi.round(2).toNumber() + "%"
+        calc.expectedValue = typeof bankroll === "number" && bigRoi.gt(0) ? ev : null
+        calc.amountToBet = typeof bankroll === "number" ? (bigRoi.gt(0) ? betAmount : 0) : null
+        calc.percentageOfBankrollToBet = bigRoi.lte(0)
+          ? "0%"
+          : fractionOfBankrollToWagerAsDecimal.times(100).round(2).toNumber() + "%"
       }
     }
   }

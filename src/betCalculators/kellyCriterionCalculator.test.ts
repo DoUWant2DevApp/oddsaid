@@ -17,6 +17,19 @@ const kellyTests = [
   [
     "American",
     110,
+    40,
+    1,
+    5000,
+    {
+      expectedValue: null,
+      expectedROI: "-16%",
+      amountToBet: 0,
+      percentageOfBankrollToBet: "0%",
+    },
+  ],
+  [
+    "American",
+    110,
     60,
     undefined,
     5000,
