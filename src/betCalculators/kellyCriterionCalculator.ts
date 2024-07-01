@@ -44,20 +44,16 @@ export function kellyCriterionCalculator(
         .minus(probabilityOfLossAsDecimal.div(proportionOfBetGainedWithWin))
         .times(kellyMultiplier)
 
-      const betAmount =
+      const standardBetAmount = 1000000
+
+      let betAmount =
         typeof bankroll === "number"
           ? Big(bankroll).times(fractionOfBankrollToWagerAsDecimal).round(2).toNumber()
           : 1000000
 
+      betAmount = betAmount > 0 ? betAmount : standardBetAmount
+
       let ev = expectedValue(betAmount, odds, oddsFormat, winProbability)
-
-      ev =
-        typeof ev === "number"
-          ? ev <= 0
-            ? expectedValue(1000000, odds, oddsFormat, winProbability)
-            : ev
-          : null
-
       if (ev) {
         const bigRoi = Big(ev).div(betAmount).times(100)
         calc.expectedROI = bigRoi.round(2).toNumber() + "%"
