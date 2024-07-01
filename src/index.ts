@@ -19,6 +19,7 @@ import { hedgeBetAmount } from "./betCalculators/hedgeBetAmount"
 import { arbitrageBetAmount } from "./betCalculators/arbitrageBetAmount"
 import type { HedgeStrategiesType } from "./betCalculators/hedgeBetAmount"
 import { expectedValue } from "./betCalculators/expectedValue"
+import { holdCalculator } from "./betCalculators/holdCalculator"
 
 import {
   //decimal to
@@ -96,6 +97,7 @@ export const oddsAid = {
     hedgeBetAmount,
     arbitrageBetAmount,
     expectedValue,
+    holdCalculator,
   },
   //convert odds
   convertOdds: {
@@ -169,6 +171,7 @@ export {
   hedgeBetAmount,
   arbitrageBetAmount,
   expectedValue,
+  holdCalculator,
   //what potential odds formats
   whatOddsFormats,
 
