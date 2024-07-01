@@ -35,11 +35,11 @@ export function kellyCriterionCalculator(
     winProbability !== "" &&
     !isNaN(Number(winProbability))
   ) {
-    const profitFrom100Bet = singleBet(100, odds, oddsFormat).profit
-    if (profitFrom100Bet) {
+    const profitFrom1000000Bet = singleBet(1000000, odds, oddsFormat).profit
+    if (profitFrom1000000Bet) {
       const winProbabilityAsDecimal = Big(winProbability).div(100)
       const probabilityOfLossAsDecimal = Big(1).minus(winProbabilityAsDecimal)
-      const proportionOfBetGainedWithWin = Big(profitFrom100Bet).div(100)
+      const proportionOfBetGainedWithWin = Big(profitFrom1000000Bet).div(1000000)
       const fractionOfBankrollToWagerAsDecimal = winProbabilityAsDecimal
         .minus(probabilityOfLossAsDecimal.div(proportionOfBetGainedWithWin))
         .times(kellyMultiplier)
@@ -47,9 +47,16 @@ export function kellyCriterionCalculator(
       const betAmount =
         typeof bankroll === "number"
           ? Big(bankroll).times(fractionOfBankrollToWagerAsDecimal).round(2).toNumber()
-          : 100
+          : 1000000
 
-      const ev = expectedValue(betAmount, odds, oddsFormat, winProbability)
+      let ev = expectedValue(betAmount, odds, oddsFormat, winProbability)
+
+      ev =
+        typeof ev === "number"
+          ? ev <= 0
+            ? expectedValue(1000000, odds, oddsFormat, winProbability)
+            : ev
+          : null
 
       if (ev) {
         const bigRoi = Big(ev).div(betAmount).times(100)
