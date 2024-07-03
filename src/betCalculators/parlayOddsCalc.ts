@@ -14,7 +14,7 @@ export function parlayOddsCalc(
     }
     return null
   })
-  if (decimalOddsArr.includes(null)) {
+  if (decimalOddsArr.includes(null) || decimalOddsArr.length === 0) {
     return null
   }
   const parlayDecimalOdds = (decimalOddsArr as Big[]).reduce((accumulator, currentValue) => {

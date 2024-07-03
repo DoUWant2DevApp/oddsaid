@@ -16,6 +16,11 @@ const parlayOddsTestExamples: {
     calculatedResult: "+125",
   },
   {
+    odds: [],
+    outputOddsFormat: "American",
+    calculatedResult: null,
+  },
+  {
     odds: [
       { odds: "133", oddsFormat: "American" },
       { odds: "133", oddsFormat: "American" },
