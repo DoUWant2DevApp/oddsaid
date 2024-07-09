@@ -1,4 +1,3 @@
-import { OddsTypeNameType } from "../files/oddFormatInfo"
 import { parlayOddsCalc } from "./parlayOddsCalc"
 
 const parlayOddsTestExamples: {
