@@ -7,7 +7,7 @@ export function singleBet(
   odds: string,
   oddsFormat: OddsTypeNameType,
   toFixed?: number,
-): { profit: string | null; totalPayout: string | null } {
+): { profit: number | null; totalPayout: number | null } {
   const decimalOdds = convertToDecimalFromFormat(odds, oddsFormat)
   betAmount = betAmount
   if (
@@ -20,8 +20,8 @@ export function singleBet(
     const profit = totalPayout.minus(bigBetAmount)
     const isToFixedValid = !isNaN(Number(toFixed))
     return {
-      profit: isToFixedValid ? profit.toFixed(toFixed) : profit.toString(),
-      totalPayout: isToFixedValid ? totalPayout.toFixed(toFixed) : totalPayout.toString(),
+      profit: isToFixedValid ? profit.round(toFixed).toNumber() : profit.toNumber(),
+      totalPayout: isToFixedValid ? totalPayout.round(toFixed).toNumber() : totalPayout.toNumber(),
     }
   }
   return { profit: null, totalPayout: null }

@@ -17,8 +17,7 @@ export function expectedValue(
     typeof betAmount == "number" &&
     !isNaN(betAmount) &&
     !isNaN(Number(winProbability)) &&
-    typeof profit === "string" &&
-    !isNaN(Number(profit))
+    typeof profit === "number"
   ) {
     const fairWinAsDecimal = Big(winProbability).div(100)
     const par1 = fairWinAsDecimal.times(Big(profit))

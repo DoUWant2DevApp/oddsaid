@@ -36,7 +36,7 @@ export function kellyCriterionCalculator(
     !isNaN(Number(winProbability))
   ) {
     const profitFrom1000000Bet = singleBet(1000000, odds, oddsFormat).profit
-    if (profitFrom1000000Bet) {
+    if (typeof profitFrom1000000Bet === "number") {
       const winProbabilityAsDecimal = Big(winProbability).div(100)
       const probabilityOfLossAsDecimal = Big(1).minus(winProbabilityAsDecimal)
       const proportionOfBetGainedWithWin = Big(profitFrom1000000Bet).div(1000000)

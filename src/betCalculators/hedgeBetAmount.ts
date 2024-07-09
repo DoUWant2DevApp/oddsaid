@@ -24,7 +24,7 @@ export function hedgeBetAmount(
 
   if (typeof originalOddsDecimalFormat === "string" && typeof hedgeOddsDecimalFormat === "string") {
     let originalBetWinOutcome = singleBet(originalBetAmount, originalOddsDecimalFormat, "Decimal")
-    if (originalBetWinOutcome.profit) {
+    if (typeof originalBetWinOutcome.profit === "number") {
       if (strategy === "Equal Profit") {
         return new Big(originalBetWinOutcome.profit)
           .plus(new Big(originalBetAmount))
